@@ -29,6 +29,16 @@ class EpiSession_Php implements EpiSessionInterface
     $_SESSION[$key] = $value;
     return $value;
   }
+  
+  public function remove($key = null)
+  {
+    if(empty($key) || !isset($_SESSION[$key]))
+      return false;
+
+    unset($_SESSION[$key]);
+    
+    return true;
+  }
 
   public function __construct()
   {
